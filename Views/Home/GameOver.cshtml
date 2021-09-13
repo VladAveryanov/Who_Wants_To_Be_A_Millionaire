@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Вы проиграли!</h1>
+<h2>Хотите сыграть снова??</h2>
+<form asp-action="Index" method="post">
+    <input type="submit" value="yes" />
+</form>
+<form asp-action="End" method="post">
+    <input type="submit" value="no" />
+</form>
+

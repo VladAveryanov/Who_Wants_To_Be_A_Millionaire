@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model GameSession
+
+<h1>@Model._questions[Model.CurrentQuestionID].QuestionText</h1>
+
+<h2>Текущий счет: @Model.CurrentScore</h2>
+
+<br>
+@if (Model.Fifty_Fifty)
+{
+    <form asp-action="Fifty_Fifty" method="post">
+        <input type="hidden" name="gameSessionID" value="@Model.ID" />
+        <input type="submit" value="Подсказка 50/50" />
+    </form>
+}
+<br>
+
+@{
+    foreach (var e in Model._answers)
+    {
+        if (e.QuestionID == Model._questions[Model.CurrentQuestionID].ID)
+        {<form asp-action="GetAnswer" method="post">
+                <input type="submit" value="@e.AnswerText" />
+                <input type="hidden" name="answerID" value="@e.ID" />
+                <input type="hidden" name="gameSessionID" value="@Model.ID" />
+            </form>
+        }
+    }
+
+}
+
+
+
